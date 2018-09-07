@@ -1,9 +1,12 @@
-package output
+package main.java.output
 
 import extension.LOG
 import extension.toSuccessString
 import messaging.LogLevel
 import networking.NetworkImpl
+import output.ChargingPowerController
+import output.GoeApi
+import output.GoeStatus
 import settings.Settings
 import kotlin.math.roundToInt
 
@@ -60,8 +63,16 @@ class GoePowerController : ChargingPowerController {
 
     override fun getcurrentConsumptionkiloWatt(): Float {
         currentStatus = goeApi.getStatus().status
+
+        //auto apply the phase count
+        val phases = currentStatus?.estimatedNumberPhases
+        if(phases != null && Settings.shared.numberPhases != phases){
+            Settings.shared.numberPhases = phases
+            LOG().log("Number of phases switched automatically to $phases", LogLevel.INFO)
+        }
+
         LOG().log("GOECONTROLLER: Current Box State:\n$currentStatus\n" +
-                "Estimated Number of Phases: ${currentStatus?.estimatedNumberPhases}", LogLevel.VERBOSE)
+                "Number of Phases: ${currentStatus?.estimatedNumberPhases}", LogLevel.VERBOSE)
         return currentStatus?.extractedPowerKiloWatt ?: 0f
     }
 }

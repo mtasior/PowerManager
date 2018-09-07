@@ -1,16 +1,17 @@
+
 import extension.LOG
 import input.FroniusProvider
+import main.java.output.GoePowerController
 import main.java.settings.IpDetector
 import main.java.webConfig.WebServer
 import manager.Manager
-import output.GoePowerController
 import settings.Settings
 
 fun main(args: Array<String>) {
 
     //Autodetect IPs if needed
     val detector = IpDetector()
-    detector.LOG().log("MANAGER: PowerManager V0.9")
+    detector.LOG().log("MANAGER: PowerManager V0.10")
 
     if (Settings.shared.froniusIp == "0.0.0.0") {
         detector.LOG().log("Auto-Detecting Fronius IP")
