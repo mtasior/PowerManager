@@ -1,6 +1,6 @@
 package main.java.webConfig
 
-val WebServer.html: String
+val html: String
     get() = """
 <!DOCTYPE html>
 <html lang="en">
@@ -16,14 +16,10 @@ val WebServer.html: String
     }
     </script>
     <style>
-      html{
-          width:100%;
-          height:100%;
-      }
       body{
-          width:100%;
-          height:100%;
-          transform: scale(3);
+          width:10%;
+          height:10%;
+          transform: scale(2.5);
           transform-origin: 0 0;
           background-color:#DDD;
       }
@@ -51,10 +47,12 @@ val WebServer.html: String
 </body>
 
 </html>
+
 """
 
-val WebServer.css: String
+val css: String
     get() = """
+
         @charset "UTF-8";
 /* CSS Document */
 
@@ -69,11 +67,15 @@ val WebServer.css: String
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
-/* Hier bitte die Schrift einfügen, die du gerne hättest */
+/* Hier bitte die Schrift einfÃ¼gen, die du gerne hÃ¤ttest */
 
 body {
   font-family: "Sans Source";
   background: #635F62;
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 h1 {
@@ -116,8 +118,8 @@ h2 {
     margin-bottom: -5px;
   }
   .button {
-    font-size: 14px;
-    width: 130px;
+    font-size: 18px;
+    width: 160px;
     padding-bottom: 2px;
     margin-bottom: 2px;
   }
