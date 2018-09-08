@@ -1,10 +1,12 @@
-package messaging
+package main.java.logging
 
+import main.java.settings.Settings
+import main.java.settings.SettingsChangedListener
+import messaging.LogLevel
+import messaging.UnifiedLogging
 import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttMessage
-import settings.Settings
-import settings.SettingsChangedListener
 
 /**
  * to provide a global, verbose logging interface.
@@ -56,7 +58,7 @@ class Logger : UnifiedLogging, SettingsChangedListener {
             println("MQTT Error: ${e.message}")
         }
         if (active && mqtt.isConnected) {
-            val m = MqttMessage("$text".toByteArray())
+            val m = MqttMessage(text.toByteArray())
             mqtt.publish("PowerManager/$level", m)
         }
         if (!active && mqtt.isConnected) {

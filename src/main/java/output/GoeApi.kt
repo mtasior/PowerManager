@@ -1,9 +1,9 @@
-package output
+package main.java.output
 
-import extension.LOG
-import extension.toInteger
+import main.java.extension.LOG
+import main.java.extension.toInteger
+import main.java.networking.ApiStub
 import messaging.LogLevel
-import networking.ApiStub
 import networking.NetworkInterface
 import java.net.URL
 
@@ -37,7 +37,7 @@ class GoeApi(network: NetworkInterface, getIp: () -> String) :
             raw > 32 -> 32
             else -> raw
         }
-        var setAmpUrl = URL(url, "mqtt?payload=amp=$validated")
+        val setAmpUrl = URL(url, "mqtt?payload=amp=$validated")
         LOG().log("GOEAPI: setting AMP using $setAmpUrl", LogLevel.VERBOSE)
 
         val status = requestData(setAmpUrl, GoeStatus::class.java)
@@ -53,7 +53,7 @@ class GoeApi(network: NetworkInterface, getIp: () -> String) :
      */
     fun setAlw(alw: Boolean): GoeApiResponse {
         val transformedAlw = alw.toInteger()
-        var alwUrl = URL(url, "mqtt?payload=alw=${transformedAlw}")
+        val alwUrl = URL(url, "mqtt?payload=alw=${transformedAlw}")
         LOG().log("GOEAPI: Setting Alw using $alwUrl", LogLevel.VERBOSE)
 
         val status = requestData(alwUrl, GoeStatus::class.java)

@@ -3,7 +3,7 @@ package main.java
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import main.java.settings.IpDetector
-import settings.SettingsChangedListener
+import main.java.settings.SettingsChangedListener
 import settings.watchFolderAsync
 import java.io.File
 import java.io.FileNotFoundException
@@ -18,11 +18,10 @@ fun main(args: Array<String>) {
 }
 
 
-class TestProvider {
-    /**
-     *  to suppress the explicit creation of this object
-     */
-    private constructor()
+class TestProvider
+/**
+ *  to suppress the explicit creation of this object
+ */ private constructor() {
 
 
     var production = 11f
@@ -101,7 +100,7 @@ class TestProvider {
         }
 
         private fun readFromFile(): TestProvider? {
-            var settings: TestProvider?
+            val settings: TestProvider?
             try {
                 settings = gson.fromJson(FileReader(FILENAME), TestProvider::class.java)
             } catch (e: FileNotFoundException) {

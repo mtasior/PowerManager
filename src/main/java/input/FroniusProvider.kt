@@ -1,7 +1,9 @@
-package input
+package main.java.input
 
+import input.Consumptions
+import input.ConsumptionsProvider
+import main.java.settings.Settings
 import networking.NetworkImpl
-import settings.Settings
 
 class FroniusProvider : ConsumptionsProvider {
     val api = FroniusSolarApi(NetworkImpl.shared) { Settings.shared.froniusIp }

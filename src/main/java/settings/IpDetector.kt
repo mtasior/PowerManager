@@ -1,10 +1,9 @@
 package main.java.settings
 
-import extension.LOG
-import input.FroniusSolarApi
+import main.java.extension.LOG
+import main.java.input.FroniusSolarApi
+import main.java.output.GoeApi
 import networking.NetworkImpl
-import output.GoeApi
-import settings.Settings
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStream

@@ -1,13 +1,11 @@
 package main.java.output
 
-import extension.LOG
-import extension.toSuccessString
+import main.java.extension.LOG
+import main.java.extension.toSuccessString
+import main.java.settings.Settings
 import messaging.LogLevel
 import networking.NetworkImpl
 import output.ChargingPowerController
-import output.GoeApi
-import output.GoeStatus
-import settings.Settings
 import kotlin.math.roundToInt
 
 class GoePowerController : ChargingPowerController {

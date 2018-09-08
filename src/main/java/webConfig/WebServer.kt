@@ -1,16 +1,15 @@
 package main.java.webConfig
 
-import extension.LOG
 import io.javalin.Context
 import io.javalin.Javalin
+import main.java.extension.LOG
+import main.java.settings.Settings
 import org.eclipse.jetty.util.log.Logger
 import settings.ManagementMode
-import settings.Settings
 
 
 class WebServer {
     lateinit var app: Javalin
-    var serverIsRunning = false
 
     init {
         //to disable jetty logging
@@ -19,14 +18,13 @@ class WebServer {
         if (Settings.shared.port > -1) {
             app = Javalin.create().disableStartupBanner()
             app.get("/") { ctx -> ctx.html(html) }
-            app.get("style.css"){ctx ->
+            app.get("style.css") { ctx ->
                 ctx.result(css)
                 ctx.contentType("text/css")
             }
             app.get("/config") { ctx -> getConfig(ctx) }
             app.get("/setconfig") { ctx -> setConfig(ctx) }
             app.start(Settings.shared.port)
-            serverIsRunning = true
             LOG().log("REST API active. The following endpoints are available:\n" +
                     "/config responds with the current configuration\n" +
                     "/setconfig sets a new config for a given field, responds with the current config\n" +

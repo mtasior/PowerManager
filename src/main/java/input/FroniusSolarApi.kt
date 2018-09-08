@@ -1,8 +1,8 @@
-package input
+package main.java.input
 
-import extension.LOG
+import main.java.extension.LOG
+import main.java.networking.ApiStub
 import messaging.LogLevel
-import networking.ApiStub
 import networking.NetworkInterface
 import java.net.URL
 

@@ -1,12 +1,12 @@
-package manager
+package main.java.manager
 
-import extension.LOG
 import input.ConsumptionsProvider
+import main.java.extension.LOG
+import main.java.settings.Settings
+import main.java.settings.SettingsChangedListener
 import messaging.LogLevel
 import output.ChargingPowerController
 import settings.ManagementMode
-import settings.Settings
-import settings.SettingsChangedListener
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.timer
@@ -52,7 +52,7 @@ class Manager(
         // this could debounce the load on the box
         lastAvailablePower = chargingPowerController.getcurrentConsumptionkiloWatt()
         val (production, consumption) = consumptionsProvider.getConsumptions()
-        var excessPower = production - consumption
+        val excessPower = production - consumption
         var newPower = excessPower + lastAvailablePower
         LOG().log("MANAGER: Excess Power from PV: $excessPower kW," +
                 " current consumption of Box: $lastAvailablePower kW", LogLevel.VERBOSE)

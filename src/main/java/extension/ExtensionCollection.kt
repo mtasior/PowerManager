@@ -1,6 +1,6 @@
-package extension
+package main.java.extension
 
-import messaging.Logger
+import main.java.logging.Logger
 import java.lang.reflect.Field
 import java.util.*
 
@@ -13,7 +13,7 @@ fun Boolean.toInteger() = if (this) 1 else 0
 /**
  * Extension to obtain a logger everywhere
  */
-fun Any.LOG(): Logger {
+fun LOG(): Logger {
     return Logger.shared
 }
 

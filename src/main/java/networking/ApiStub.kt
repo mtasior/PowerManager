@@ -1,8 +1,9 @@
-package networking
+package main.java.networking
 
 import com.google.gson.Gson
-import extension.LOG
+import main.java.extension.LOG
 import messaging.LogLevel
+import networking.NetworkInterface
 import java.net.URL
 
 open class ApiStub(private val network: NetworkInterface, private val getIp: () -> String) {

@@ -1,7 +1,9 @@
-package settings
+package main.java.settings
 
 import com.google.gson.GsonBuilder
 import messaging.LogLevel
+import settings.ManagementMode
+import settings.watchFolderAsync
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileReader
@@ -10,12 +12,15 @@ import java.nio.file.Paths
 
 /**
  * Defines all settings. Can then be written to and read from a file on disk.
+ * Constructor is private to suppress explicit creation
  */
-class Settings {
+class Settings private constructor() {
+
     /**
-     *  to suppress the explicit creation of this object
+     * in order to write the current version into the status object for the API but not the Settings file
      */
-    private constructor()
+    @Transient
+    val version = "0.11"
 
     /**
      * the management Mode
@@ -212,7 +217,7 @@ class Settings {
         }
 
         private fun readFromFile(): Settings? {
-            var settings: Settings?
+            val settings: Settings?
             try {
                 settings = gson.fromJson(FileReader(FILENAME), Settings::class.java)
             } catch (e: FileNotFoundException) {
