@@ -67,6 +67,52 @@ class WebServer {
                 return
             }
             // ==============================
+            //minValueHandling
+            if (key == "minPowerKiloWatt") {
+                val minPower = queryParamMap.get(key)?.get(0)
+                if (minPower != null) {
+                    try {
+                        val minPowerFloat = minPower.toFloat()
+                        Settings.shared.minPowerKiloWatt = minPowerFloat
+                        LOG().log("Minimum Power set: $minPowerFloat kW")
+                        ctx.status(200)
+                        ctx.result(Settings.shared.toString())
+                    } catch (e: NumberFormatException) {
+                        ctx.result("Not a numerical value: $minPower")
+                        ctx.status(400)
+                        return
+                    }
+                } else {
+                    ctx.result("please provide a value")
+                    ctx.status(400)
+                    return
+                }
+                return
+            }
+            // ==============================
+            //maxPowerHandlong
+            if (key == "maxPowerKiloWatt") {
+                val minPower = queryParamMap.get(key)?.get(0)
+                if (minPower != null) {
+                    try {
+                        val minPowerFloat = minPower.toFloat()
+                        Settings.shared.maxPowerKiloWatt = minPowerFloat
+                        LOG().log("Minimum Power set: $minPowerFloat kW")
+                        ctx.status(200)
+                        ctx.result(Settings.shared.toString())
+                    } catch (e: NumberFormatException) {
+                        ctx.result("Not a numerical value: $minPower")
+                        ctx.status(400)
+                        return
+                    }
+                } else {
+                    ctx.result("please provide a value")
+                    ctx.status(400)
+                    return
+                }
+                return
+            }
+
 
         }
 
