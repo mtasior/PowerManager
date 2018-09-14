@@ -54,6 +54,7 @@ class Manager(
         val (production, consumption) = consumptionsProvider.getConsumptions()
         val excessPower = production - consumption
         var newPower = excessPower + lastAvailablePower
+        LOG().log("PowerManager Version V${Settings.shared.version}", LogLevel.VERBOSE)
         LOG().log("MANAGER: Excess Power from PV: $excessPower kW," +
                 " current consumption of Box: $lastAvailablePower kW", LogLevel.VERBOSE)
         LOG().log("MANAGER: New available Power for Box: $newPower kW", LogLevel.VERBOSE)

@@ -2,6 +2,8 @@ package main.java.output
 
 import main.java.extension.LOG
 import main.java.extension.toSuccessString
+import main.java.manager.BoxState
+import main.java.manager.DataHolder
 import main.java.settings.Settings
 import messaging.LogLevel
 import networking.NetworkImpl
@@ -64,10 +66,14 @@ class GoePowerController : ChargingPowerController {
 
         //auto apply the phase count
         val phases = currentStatus?.estimatedNumberPhases
-        if(phases != null && Settings.shared.numberPhases != phases){
+        if (phases != null && Settings.shared.numberPhases != phases) {
             Settings.shared.numberPhases = phases
             LOG().log("Number of phases switched automatically to $phases", LogLevel.INFO)
         }
+
+        //store the current box data for the API
+        DataHolder.shared.boxState = BoxState(currentStatus?.carState ?: CarState.UNKNOWN,
+                currentStatus?.extractedPowerKiloWatt ?: 0f)
 
         LOG().log("GOECONTROLLER: Current Box State:\n$currentStatus\n" +
                 "Number of Phases: ${currentStatus?.estimatedNumberPhases}", LogLevel.VERBOSE)

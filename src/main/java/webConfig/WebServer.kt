@@ -3,6 +3,7 @@ package main.java.webConfig
 import io.javalin.Context
 import io.javalin.Javalin
 import main.java.extension.LOG
+import main.java.manager.DataHolder
 import main.java.settings.Settings
 import settings.ManagementMode
 
@@ -23,6 +24,7 @@ class WebServer {
             }
             app.get("/config") { ctx -> getConfig(ctx) }
             app.get("/setconfig") { ctx -> setConfig(ctx) }
+            app.get("/currentpower") { ctx -> getCurrentPower(ctx) }
             app.start(Settings.shared.port)
             LOG().log("REST API active. The following endpoints are available:\n" +
                     "/config responds with the current configuration\n" +
@@ -30,6 +32,10 @@ class WebServer {
                     "Currently supported: mode.\n" +
                     "Example: /setconfig?mode=OFF")
         }
+    }
+
+    fun getCurrentPower(ctx: Context) {
+        ctx.result(DataHolder.shared.toString())
     }
 
     fun getConfig(ctx: Context) {

@@ -64,7 +64,7 @@ class TestProvider
         private val listeners: MutableList<SettingsChangedListener> = mutableListOf()
 
         /**
-         * implements the surveillance of the settings file. If a new one is found, the current instance is
+         * implements the surveillance of the settings file. If a new one is found, the current shared is
          * replaced and the listeners are informed
          */
         init {
