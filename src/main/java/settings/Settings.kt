@@ -20,7 +20,7 @@ class Settings private constructor() {
      * in order to write the current version into the status object for the API but not the Settings file
      */
     @Transient
-    val version = "0.12"
+    val version = "0.13"
 
     /**
      * the management Mode
