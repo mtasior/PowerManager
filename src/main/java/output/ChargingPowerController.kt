@@ -1,5 +1,7 @@
 package output
 
+import main.java.output.CarState
+
 interface ChargingPowerController {
     /**
      * sets the new desired maximum charging power. Can calculate the most appropriate value.
@@ -15,4 +17,10 @@ interface ChargingPowerController {
      * return the current charging consumption in kiloWatt. This is definitely called before setting the first charging power.
      */
     fun getcurrentConsumptionkiloWatt(): Float
+
+
+    /**
+     * return the current CarState. Used for visualization in the App. Always called right AFTER getcurrentConsumptionkiloWatt()
+     */
+    fun getCurrentCarState(): CarState
 }

@@ -52,6 +52,11 @@ class Manager(
         // this could debounce the load on the box
         lastAvailablePower = chargingPowerController.getcurrentConsumptionkiloWatt()
         val (production, consumption) = consumptionsProvider.getConsumptions()
+
+        //store the current box data for the API
+        DataHolder.shared.boxState = BoxState(chargingPowerController.getCurrentCarState(), lastAvailablePower)
+
+        // The actual power calculation
         val excessPower = production - consumption
         var newPower = excessPower + lastAvailablePower
         LOG().log("PowerManager Version V${Settings.shared.version}", LogLevel.VERBOSE)
@@ -86,7 +91,6 @@ class Manager(
         } else newPower
 
         chargingPowerController.setNewChargingPowerKiloWatt(newPower)
-
     }
 
 

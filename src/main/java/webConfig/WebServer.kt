@@ -24,7 +24,7 @@ class WebServer {
             }
             app.get("/config") { ctx -> getConfig(ctx) }
             app.get("/setconfig") { ctx -> setConfig(ctx) }
-            app.get("/currentpower") { ctx -> getCurrentPower(ctx) }
+            app.get("/boxstate") { ctx -> getCurrentPower(ctx) }
             app.start(Settings.shared.port)
             LOG().log("REST API active. The following endpoints are available:\n" +
                     "/config responds with the current configuration\n" +
