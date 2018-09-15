@@ -5,6 +5,7 @@ import main.java.extension.toInteger
 import main.java.networking.ApiStub
 import messaging.LogLevel
 import networking.NetworkInterface
+import output.CarState
 import java.net.URL
 
 /**
@@ -179,5 +180,3 @@ data class GoeStatus(
             }
         }
 }
-
-enum class CarState { BOX_READY_NO_CAR, CAR_CHARGING, WAITING_FOR_CAR, CHARGING_ENDED_CAR_CONNECTED, UNKNOWN }

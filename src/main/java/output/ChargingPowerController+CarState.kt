@@ -1,7 +1,5 @@
 package output
 
-import main.java.output.CarState
-
 interface ChargingPowerController {
     /**
      * sets the new desired maximum charging power. Can calculate the most appropriate value.
@@ -24,3 +22,5 @@ interface ChargingPowerController {
      */
     fun getCurrentCarState(): CarState
 }
+
+enum class CarState { BOX_READY_NO_CAR, CAR_CHARGING, WAITING_FOR_CAR, CHARGING_ENDED_CAR_CONNECTED, UNKNOWN }
