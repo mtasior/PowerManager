@@ -1,7 +1,7 @@
 package main.java.manager
 
 import com.google.gson.GsonBuilder
-import main.java.output.CarState
+import output.CarState
 
 class DataHolder private constructor() {
     private object Holder {

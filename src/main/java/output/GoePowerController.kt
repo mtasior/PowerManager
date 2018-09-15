@@ -5,6 +5,7 @@ import main.java.extension.toSuccessString
 import main.java.settings.Settings
 import messaging.LogLevel
 import networking.NetworkImpl
+import output.CarState
 import output.ChargingPowerController
 import kotlin.math.roundToInt
 
