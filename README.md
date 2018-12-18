@@ -16,3 +16,7 @@ The manager knows four working modes:
  - PV: Only charge with the available power
  - PV_WITH_MIN: Charge with available power but do not reduce below the minimum value
  - MAX: Charge with the maximum power
+ 
+ ## Development
+ 
+ This software is being developed as a hobby. In the future I plan to integrate a direct FHEM connection and a more sophisticated MQTT API.
